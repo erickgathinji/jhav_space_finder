@@ -6,14 +6,15 @@ __pycache__/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-media
-.venv
-settings.py
+/media
+/.venv
+/jhav_space_project/settings.py
+/static
 
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
 # in your Git repository. Update and uncomment the following line accordingly.
-# <django-project-name>/staticfiles/
+jhav_space_project/staticfiles/
 
 ### Django.Python Stack ###
 # Byte-compiled / optimized / DLL files

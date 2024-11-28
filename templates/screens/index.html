@@ -1,7 +1,345 @@
 {% extends 'master.html' %}
-
+{% load static %}
 
 {% block content %}
-<h1>Home</h1>	
+
+    <!-- Showcase / Header -->
+    <section id="showcase" style="background: url('{% static "img/header.jpg" %}') no-repeat;background-size: cover">
+        <div class="container text-center">
+            <div class="home-search p-5">
+                <div class="overlay p-5">
+                    <h1 class="display-4 mb-4">
+                        Find your Ideal Coworking Space in just a click
+                    </h1>
+                    <p class="lead">Securing the perfect workspace has never been simpler. Browse, compare, and book
+                        with
+                        ease, all in one seamless platform.</p>
+                    <div class="search">
+                        <form action="search_result.html">
+                            <!-- Form Row 1 -->
+                            <div class="form-row">
+                                <!--keyword-->
+                                <div class="col-md-4 mb-3">
+                                    <label class="sr-only">Keywords</label>
+                                    <input type="text" name="keywords" class="form-control"
+                                           placeholder="Keyword (Workspace, Amenities, etc)">
+                                </div>
+
+                                <!--city-->
+                                <div class="col-md-4 mb-3">
+                                    <label class="sr-only">City</label>
+                                    <input type="text" name="city" class="form-control" placeholder="City or Town">
+                                </div>
+
+                                <!--search county-->
+                                <div class="col-md-4 mb-3">
+                                    <label class="sr-only">County</label> <!--change to county-->
+                                    <select name="state" class="form-control">
+                                        <option selected="" disabled="disabled">County (All)</option>
+                                        <option value="">Nairobi</option>
+                                        <option value="">Mombasa</option>
+                                        <option value="">Kisumu</option>
+                                        <option value="">Kakamega</option>
+                                        <option value=""> Nakuru</option>
+                                        <option value="">Kwale</option>
+                                        <option value="">Kilifi</option>
+                                        <option value="">Tana River</option>
+                                        <option value="">Lamu</option>
+                                        <option value="">Taita Taveta</option>
+                                        <option value="">Garissa</option>
+                                        <option value="">Wajir</option>
+                                        <option value="">Mandera</option>
+                                        <option value="">Marsabit</option>
+                                        <option value="">Isiolo</option>
+                                        <option value="">Meru</option>
+                                        <option value="">Tharaka-Nithi</option>
+                                        <option value="">Embu</option>
+                                        <option value=""> Kitui</option>
+                                        <option value="">Machakos</option>
+                                        <option value=""> Makueni</option>
+                                        <option value="">Nyandarua</option>
+                                        <option value="">Nyeri</option>
+                                        <option value="">Kirinyaga</option>
+                                        <option value="">Murang'a</option>
+                                        <option value="">Kiambu</option>
+                                        <option value="">Turkana</option>
+                                        <option value="">West Pokot</option>
+                                        <option value="">Samburu</option>
+                                        <option value="">Trans Nzoia</option>
+                                        <option value="">Uasin Gishu</option>
+                                        <option value="">Elgeyo/Marakwet</option>
+                                        <option value="">Nandi</option>
+                                        <option value="">Baringo</option>
+                                        <option value="">Laikipia</option>
+                                        <option value=""> Narok</option>
+                                        <option value=""> Kajiado</option>
+                                        <option value=""> Kericho</option>
+                                        <option value="">Bomet</option>
+                                        <option value="">Vihiga</option>
+                                        <option value="">Bungoma</option>
+                                        <option value="">Busia</option>
+                                        <option value="">Siaya</option>
+                                        <option value="">Homa Bay</option>
+                                        <option value="">Migori</option>
+                                        <option value="">Kisii</option>
+                                        <option value="">Nyamira</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Form Row 2 -->
+                            <div class="form-row">
+                                <!--Desks-->
+                                <div class="col-md-6 mb-3">
+                                    <label class="sr-only">Desks</label>
+                                    <select name="bedrooms" class="form-control">
+                                        <option selected="" disabled="disabled">Desks (All)</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                    </select>
+                                </div>
+
+                                <!--Price-->
+                                <div class="col-md-6 mb-3">
+                                    <select name="price" class="form-control" id="type">
+                                        <option selected="" disabled="disabled">Maximum Price/Budget (Any)</option>
+                                        <option value="2500">Ksh. 2,500</option>
+                                        <option value="5000">Ksh. 5,000</option>
+                                        <option value="10000">Ksh. 10,000</option>
+                                        <option value="20000">Ksh. 20,000</option>
+                                        <option value="35000">Ksh. 35,000</option>
+                                        <option value="50000">Ksh. 50,000</option>
+                                        <option value="100000">Ksh. 100,000</option>
+                                        <option value="250000">Ksh. 250,000</option>
+                                        <option value="500000">Ksh. 500,000</option>
+                                        <option value="1000000">Ksh. 1M+</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-secondary btn-block mt-4" type="submit">Browse Spaces</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Space Listings -->
+    <section id="listings" class="py-5" style="background: #e1e0e0">
+        <div class="container">
+            <h2 class="text-center mb-3"> Newest Coworking Spaces</h2>
+            <div class="row">
+                <!-- Space 1 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card listing-preview">
+                        <img class="card-img-top" src="assets/img/spaces/space-1.jpg" alt="">
+                        <div class="card-img-overlay">
+                            <h2>
+                                <span class="badge badge-secondary" style="color: #FFFF00">Ksh 2,000/day</span>
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="listing-heading text-center">
+                                <h4 class="text-primary">Mombasa Connect</h4>
+                                <p>
+                                    <i class="fas fa-map-marker text-secondary"></i> Shanzu, Mombasa</p>
+                            </div>
+                            <hr>
+                            <div class="row py-2 text-secondary">
+                                <div class="col-6">
+                                    <i class="fas fa-th-large"></i> Rooms: 6
+                                </div>
+                                <div class="col-6">
+                                    <i class="fas fa-couch"></i> Desks: 34
+                                </div>
+                            </div>
+                            <div class="row py-2 text-secondary">
+                                <div class="col-6">
+                                    <i class="fa-solid fa-user-group"></i> Capacity: 60
+                                </div>
+                                <div class="col-6">
+                                    <i class="fas fa-car"></i> Parking: 15
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row py-2 text-secondary">
+                                <div class="col-6">
+                                    <i class="fas fa-eye"></i> Available: <strong>&#10003</strong>
+                                </div>
+                            </div>
+                            <div class="row text-secondary pb-2">
+                                <div class="col-6">
+                                    <i class="fas fa-clock"></i> 2 days ago
+                                </div>
+                            </div>
+                            <hr>
+                            <a href="space.html" class="btn btn-primary btn-block">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Space 2 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card listing-preview">
+                        <img class="card-img-top" src="assets/img/spaces/space-1.jpg" alt="">
+                        <div class="card-img-overlay">
+                            <h2>
+                                <span class="badge badge-secondary" style="color: #FFFF00">Ksh 2,000/day</span>
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="listing-heading text-center">
+                                <h4 class="text-primary">Mombasa Connect</h4>
+                                <p>
+                                    <i class="fas fa-map-marker text-secondary"></i> Shanzu, Mombasa</p>
+                            </div>
+                            <hr>
+                            <div class="row py-2 text-secondary">
+                                <div class="col-6">
+                                    <i class="fas fa-th-large"></i> Rooms: 6
+                                </div>
+                                <div class="col-6">
+                                    <i class="fas fa-couch"></i> Desks: 34
+                                </div>
+                            </div>
+                            <div class="row py-2 text-secondary">
+                                <div class="col-6">
+                                    <i class="fa-solid fa-user-group"></i> Capacity: 60
+                                </div>
+                                <div class="col-6">
+                                    <i class="fas fa-car"></i> Parking: 15
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row py-2 text-secondary">
+                                <div class="col-6">
+                                    <i class="fas fa-eye"></i> Available: <strong>&#10003</strong>
+                                </div>
+                            </div>
+                            <div class="row text-secondary pb-2">
+                                <div class="col-6">
+                                    <i class="fas fa-clock"></i> 2 days ago
+                                </div>
+                            </div>
+                            <hr>
+                            <a href="space.html" class="btn btn-primary btn-block">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Space 3 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card listing-preview">
+                        <img class="card-img-top" src="assets/img/spaces/space-1.jpg" alt="">
+                        <div class="card-img-overlay">
+                            <h2>
+                                <span class="badge badge-secondary" style="color: #FFFF00">Ksh 2,000/day</span>
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="listing-heading text-center">
+                                <h4 class="text-primary">Mombasa Connect</h4>
+                                <p>
+                                    <i class="fas fa-map-marker text-secondary"></i> Shanzu, Mombasa</p>
+                            </div>
+                            <hr>
+                            <div class="row py-2 text-secondary">
+                                <div class="col-6">
+                                    <i class="fas fa-th-large"></i> Rooms: 6
+                                </div>
+                                <div class="col-6">
+                                    <i class="fas fa-couch"></i> Desks: 34
+                                </div>
+                            </div>
+                            <div class="row py-2 text-secondary">
+                                <div class="col-6">
+                                    <i class="fa-solid fa-user-group"></i> Capacity: 60
+                                </div>
+                                <div class="col-6">
+                                    <i class="fas fa-car"></i> Parking: 15
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row py-2 text-secondary">
+                                <div class="col-6">
+                                    <i class="fas fa-eye"></i> Available: <strong>&#10003</strong>
+                                </div>
+                            </div>
+                            <div class="row text-secondary pb-2">
+                                <div class="col-6">
+                                    <i class="fas fa-clock"></i> 2 days ago
+                                </div>
+                            </div>
+                            <hr>
+                            <a href="space.html" class="btn btn-primary btn-block">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!--Services-->
+    <section id="services" class="py-5 bg-secondary text-white" style="background: url('{% static "img/table.jpg" %}')">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <i class="fas fa-laptop-house fa-4x mr-4"></i>
+                    <hr>
+                    <h3>Space Management</h3>
+                    <p>We take care of all the details – from setting up workstations to ensuring high-speed internet
+                        and
+                        comfortable meeting spaces. Whether you're a startup, a freelancer, or an established company,
+                        we
+                        handle the logistics so you can focus on what matters.</p>
+                </div>
+                <div class="col-md-4">
+                    <!--                <i class="fas fa-comment fa-4x mr-4"></i>-->
+                    <i class="fa-solid fa-lightbulb fa-4x mr-4"></i>
+                    <hr>
+                    <h3>Consulting</h3>
+                    <p>Our experts help you find the perfect coworking environment based on your team’s size, needs, and
+                        budget. Need a private office, a hot desk, or a collaborative open space? We’ll guide you to the
+                        most suitable workspace to elevate your business.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-building fa-4x mr-4"></i>
+                    <hr>
+                    <h3>Space Rental</h3>
+                    <p>Whether you need a space for the day or long-term, we offer flexible rental options. Choose from
+                        hot
+                        desks, private offices, or dedicated workspaces, all designed to foster collaboration and
+                        productivity. Pay as you go, or sign up for a membership that suits your needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 {% endblock %}
 

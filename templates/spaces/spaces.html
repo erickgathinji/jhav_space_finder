@@ -1,4 +1,5 @@
 {% extends 'master.html' %}
+{% load humanize %}
 {% load static %}
 {% block content %}
 
@@ -33,300 +34,69 @@
     <section id="listings" class="py-4" style="background: #e1e0e0">
         <div class="container">
             <div class="row">
+                {#display available space listings#}
+                {% if spaces %}
+                    {% for space in spaces %}
 
-                <!-- Space 1 -->
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card listing-preview">
-                        <img class="card-img-top" src="assets/img/spaces/space-1.jpg" alt="">
-                        <div class="card-img-overlay">
-                            <h2>
-                                <span class="badge badge-secondary" style="color: #FFFF00">Ksh 2,000/day</span>
-                            </h2>
+                        {#space#}
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card listing-preview">
+                                <img class="card-img-top" src="{{ space.main_space_photo.url }}" alt="">
+                                <div class="card-img-overlay">
+                                    <h2>
+                                        <span class="badge badge-secondary" style="color: #FFFF00">Ksh. {{ space.daily_charges | intcomma }}/day</span>
+                                    </h2>
+                                </div>
+                                <div class="card-body">
+                                    <div class="listing-heading text-center">
+                                        <h4 class="text-primary">{{ space.name }}</h4>
+                                        <p>
+                                            <i class="fas fa-map-marker text-secondary"></i> {{ space.town_or_location }}, {{ space.county }}</p>
+                                    </div>
+                                    <hr>
+                                    <div class="row py-2 text-secondary">
+                                        <div class="col-6">
+                                            <i class="fas fa-th-large"></i> Rooms: {{ space.rooms }}
+                                        </div>
+                                        <div class="col-6">
+                                            <i class="fas fa-couch"></i> Desks: {{ space.desks }}
+                                        </div>
+                                    </div>
+                                    <div class="row py-2 text-secondary">
+                                        <div class="col-6">
+                                            <i class="fa-solid fa-user-group"></i> Capacity: {{ space.capacity }}
+                                        </div>
+                                        <div class="col-6">
+                                            <i class="fas fa-car"></i> Parking: {{ space.parking }}
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row py-2 text-secondary"> 
+                                        <div class="col-12">
+                                            <i class="fas fa-clock"></i> Open: {{ space.open_time }} - {{ space.closing_time }}
+                                        </div>
+                                    </div>
+                                    <div class="row text-secondary pb-2">
+                                        <div class="col-12">
+                                            <i class="fas fa-calendar-check"></i> Availability: {{ space.days_open }}
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <a href="{%  url 'space' space.id %}" class="btn btn-primary btn-block">View Details</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <div class="listing-heading text-center">
-                                <h4 class="text-primary">Mombasa Connect</h4>
-                                <p>
-                                    <i class="fas fa-map-marker text-secondary"></i> Shanzu, Mombasa</p>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-th-large"></i> Rooms: 6
-                                </div>
-                                <div class="col-6">
-                                    <i class="fas fa-couch"></i> Desks: 34
-                                </div>
-                            </div>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fa-solid fa-user-group"></i> Capacity: 60
-                                </div>
-                                <div class="col-6">
-                                    <i class="fas fa-car"></i> Parking: 15
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-eye"></i> Available: <strong>&#10003</strong>
-                                </div>
-                            </div>
-                            <div class="row text-secondary pb-2">
-                                <div class="col-6">
-                                    <i class="fas fa-clock"></i> 2 days ago
-                                </div>
-                            </div>
-                            <hr>
-                            <a href="space.html" class="btn btn-primary btn-block">View Details</a>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Space 2 -->
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card listing-preview">
-                        <img class="card-img-top" src="assets/img/spaces/space-1.jpg" alt="">
-                        <div class="card-img-overlay">
-                            <h2>
-                                <span class="badge badge-secondary" style="color: #FFFF00">Ksh 2,000/day</span>
-                            </h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="listing-heading text-center">
-                                <h4 class="text-primary">Mombasa Connect</h4>
-                                <p>
-                                    <i class="fas fa-map-marker text-secondary"></i> Shanzu, Mombasa</p>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-th-large"></i> Rooms: 6
-                                </div>
-                                <div class="col-6">
-                                    <i class="fas fa-couch"></i> Desks: 34
-                                </div>
-                            </div>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fa-solid fa-user-group"></i> Capacity: 60
-                                </div>
-                                <div class="col-6">
-                                    <i class="fas fa-car"></i> Parking: 15
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-eye"></i> Available: <strong>&#10003</strong>
-                                </div>
-                            </div>
-                            <div class="row text-secondary pb-2">
-                                <div class="col-6">
-                                    <i class="fas fa-clock"></i> 2 days ago
-                                </div>
-                            </div>
-                            <hr>
-                            <a href="space.html" class="btn btn-primary btn-block">View Details</a>
-                        </div>
-                    </div>
-                </div>
+                    {% endfor %}
 
-                <!-- Space 3 -->
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card listing-preview">
-                        <img class="card-img-top" src="assets/img/spaces/space-1.jpg" alt="">
-                        <div class="card-img-overlay">
-                            <h2>
-                                <span class="badge badge-secondary" style="color: #FFFF00">Ksh 2,000/day</span>
-                            </h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="listing-heading text-center">
-                                <h4 class="text-primary">Mombasa Connect</h4>
-                                <p>
-                                    <i class="fas fa-map-marker text-secondary"></i> Shanzu, Mombasa</p>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-th-large"></i> Rooms: 6
-                                </div>
-                                <div class="col-6">
-                                    <i class="fas fa-couch"></i> Desks: 34
-                                </div>
-                            </div>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fa-solid fa-user-group"></i> Capacity: 60
-                                </div>
-                                <div class="col-6">
-                                    <i class="fas fa-car"></i> Parking: 15
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-eye"></i> Available: <strong>&#10003</strong>
-                                </div>
-                            </div>
-                            <div class="row text-secondary pb-2">
-                                <div class="col-6">
-                                    <i class="fas fa-clock"></i> 2 days ago
-                                </div>
-                            </div>
-                            <hr>
-                            <a href="space.html" class="btn btn-primary btn-block">View Details</a>
-                        </div>
+                {% else %}
+               
+                    {#not available#}
+                    <div class="col-md-12">
+                        Spaces are in high demand! Nothing here yet, check back soon for new availability.
                     </div>
-                </div>
 
-                <!-- Space 4 -->
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card listing-preview">
-                        <img class="card-img-top" src="assets/img/spaces/space-1.jpg" alt="">
-                        <div class="card-img-overlay">
-                            <h2>
-                                <span class="badge badge-secondary" style="color: #FFFF00">Ksh 2,000/day</span>
-                            </h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="listing-heading text-center">
-                                <h4 class="text-primary">Mombasa Connect</h4>
-                                <p>
-                                    <i class="fas fa-map-marker text-secondary"></i> Shanzu, Mombasa</p>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-th-large"></i> Rooms: 6
-                                </div>
-                                <div class="col-6">
-                                    <i class="fas fa-couch"></i> Desks: 34
-                                </div>
-                            </div>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fa-solid fa-user-group"></i> Capacity: 60
-                                </div>
-                                <div class="col-6">
-                                    <i class="fas fa-car"></i> Parking: 15
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-eye"></i> Available: <strong>&#10003</strong>
-                                </div>
-                            </div>
-                            <div class="row text-secondary pb-2">
-                                <div class="col-6">
-                                    <i class="fas fa-clock"></i> 2 days ago
-                                </div>
-                            </div>
-                            <hr>
-                            <a href="space.html" class="btn btn-primary btn-block">View Details</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Space 5 -->
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card listing-preview">
-                        <img class="card-img-top" src="assets/img/spaces/space-1.jpg" alt="">
-                        <div class="card-img-overlay">
-                            <h2>
-                                <span class="badge badge-secondary" style="color: #FFFF00">Ksh 2,000/day</span>
-                            </h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="listing-heading text-center">
-                                <h4 class="text-primary">Mombasa Connect</h4>
-                                <p>
-                                    <i class="fas fa-map-marker text-secondary"></i> Shanzu, Mombasa</p>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-th-large"></i> Rooms: 6
-                                </div>
-                                <div class="col-6">
-                                    <i class="fas fa-couch"></i> Desks: 34
-                                </div>
-                            </div>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fa-solid fa-user-group"></i> Capacity: 60
-                                </div>
-                                <div class="col-6">
-                                    <i class="fas fa-car"></i> Parking: 15
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-eye"></i> Available: <strong>&#10003</strong>
-                                </div>
-                            </div>
-                            <div class="row text-secondary pb-2">
-                                <div class="col-6">
-                                    <i class="fas fa-clock"></i> 2 days ago
-                                </div>
-                            </div>
-                            <hr>
-                            <a href="space.html" class="btn btn-primary btn-block">View Details</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Space 6 -->
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card listing-preview">
-                        <img class="card-img-top" src="assets/img/spaces/space-1.jpg" alt="">
-                        <div class="card-img-overlay">
-                            <h2>
-                                <span class="badge badge-secondary" style="color: #FFFF00">Ksh 2,000/day</span>
-                            </h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="listing-heading text-center">
-                                <h4 class="text-primary">Mombasa Connect</h4>
-                                <p>
-                                    <i class="fas fa-map-marker text-secondary"></i> Shanzu, Mombasa</p>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-th-large"></i> Rooms: 6
-                                </div>
-                                <div class="col-6">
-                                    <i class="fas fa-couch"></i> Desks: 34
-                                </div>
-                            </div>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fa-solid fa-user-group"></i> Capacity: 60
-                                </div>
-                                <div class="col-6">
-                                    <i class="fas fa-car"></i> Parking: 15
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-eye"></i> Available: <strong>&#10003</strong>
-                                </div>
-                            </div>
-                            <div class="row text-secondary pb-2">
-                                <div class="col-6">
-                                    <i class="fas fa-clock"></i> 2 days ago
-                                </div>
-                            </div>
-                            <hr>
-                            <a href="space.html" class="btn btn-primary btn-block">View Details</a>
-                        </div>
-                    </div>
-                </div>
+                {% endif %}
 
             </div>
 

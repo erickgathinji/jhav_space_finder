@@ -49,26 +49,32 @@
 
                 <!--spotlight-->
                 <div class="col-md-4">
-                    <div class="card">
-                        <img class="card-img-top" src="assets/img/spaces/space-4.jpg"
+                    
+                    {% if spotlight_spaces %}
+                    	{% for space in spotlight_spaces %}
+                    		<div class="card">
+                        <img class="card-img-top" src="{{ space.main_space_photo.url }}"
                              alt="Spotlight Space of the Month:">
                         <div class="card-body text-center">
                             <h5 class="card-title" style="color: #005555"><strong>Spotlight Workspace of the
                                 Month:</strong></h5>
-                            <h6 class="text-secondary"><strong>Mombasa Connect</strong></h6>
+                            <h6 class="text-secondary"><strong>{{ space.name }}</strong></h6>
                             <p class="card-text">
-                                This month, we’re shining a spotlight on Mombasa Connect for standing out with top
-                                standards for innovation,
-                                functionality, comfort, customer service, productivity, and community.
+                                {{ space.description }}
                             </p>
                         </div>
                     </div>
+                    	{% endfor %}
+                    	
+                    {% endif %} 
+                    
+                    
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Work with us -->{% static "" %}
+    <!-- Work with us -->
     <section id="work" class="bg-dark text-white text-center" style="background: url('{% static "img/table.jpg" %}')">
         <h2 class="display-4">Empowering Your Professional Journey</h2>
         <h4>We will guide you to the most suitable workspaces that enhance productivity and inspire collaboration.</h4>
@@ -83,55 +89,36 @@
     <!-- Our Team -->
     <section id="team" class="py-5" style="background: #e1e0e0">
         <div class="container">
-            <h2 class="text-center">Meet Our Team</h2>
-            <div class="row text-center">
-                <!--manager-->
-                <div class="col-md-4">
-                    <img src="assets/img/managers/faith.jpg" alt="" class="rounded-circle mb-3">
-                    <h4>Kyle Brown</h4>
-                    <p class="text-success">
-                        <i class="fas fa-award text-success mb-3"></i> Manager, Head of Space Operations</p>
-                    <hr>
-                    <p>
-                        <i class="fas fa-map-marker text-secondary"></i> Mombasa
-                    </p>
-                    <p>
-                        <i class="fas fa-phone"></i> (+254) 712345678</p>
-                    <p>
-                        <i class="fas fa-envelope-open"></i> kyle@jhavspace.co.ke</p>
-                </div>
+            <h2 class="text-center mb-3 mt-3">Meet Our Team</h2>
+            <div class="row text-center mt-5">
 
-                <!--manager-->
-                <div class="col-md-4">
-                    <img src="assets/img/managers/faith.jpg" alt="" class="rounded-circle mb-3">
-                    <h4>Kyle Brown</h4>
-                    <p class="text-success">
-                        Manager, Head of Space Operations</p>
-                    <hr>
-                    <p>
-                        <i class="fas fa-map-marker text-secondary"></i> Mombasa
-                    </p>
-                    <p>
-                        <i class="fas fa-phone"></i> (+254) 712345678</p>
-                    <p>
-                        <i class="fas fa-envelope-open"></i> kyle@jhavspace.co.ke</p>
-                </div>
+                {% if managers %}
+                    {% for manager in managers %}
+                        {#manager#}
+                        <div class="col-md-4">
+                            <img src="{{ manager.upload_photo.url }}" alt="" class="rounded-circle mb-3">
+                            <h4>{{ manager.full_name }}</h4>
+                            <p class="text-primary">
+                                <i class="fas fa-award text-success mb-3"></i> Space Manager </p>
+                            <hr>
+                            <p>
+                                <i class=" text-secondary"></i> {{ manager.title }}
+                            </p>
+                            <p>
+                                {{ manager.bio }}
+                            </p>
+                            <p>
+                                <i class="fas fa-phone"></i> {{ manager.phone }}</p>
+                            <p>
+                                <i class="fas fa-envelope-open"></i> {{ manager.email }}</p>
+                        </div>
 
-                <!--manager-->
-                <div class="col-md-4">
-                    <img src="assets/img/managers/faith.jpg" alt="" class="rounded-circle mb-3">
-                    <h4>Kyle Brown</h4>
-                    <p class="text-success">
-                        Manager, Head of Space Operations</p>
-                    <hr>
-                    <p>
-                        <i class="fas fa-map-marker text-secondary"></i> Mombasa
-                    </p>
-                    <p>
-                        <i class="fas fa-phone"></i> (+254) 712345678</p>
-                    <p>
-                        <i class="fas fa-envelope-open"></i> kyle@jhavspace.co.ke</p>
-                </div>
+                    {% endfor %}
+
+                {% else %}
+                    Oops! No active managers are available right now. Check back soon!
+                {% endif %}
+
             </div>
         </div>
     </section>

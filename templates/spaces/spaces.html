@@ -105,12 +105,12 @@
             </div>
 
             <!--pagination-->
-            <div class="row">
+            <div class="row ">
                 <div class="col-md-12">
 
                     {% if spaces.has_other_pages %}
 
-                        <ul class="pagination">
+                        <ul class="pagination d-flex justify-content-center">
                             {% if spaces.has_previous %}
                                 <li class="page-item">
                                     <a href="?page={{ spaces.previous_page_number }}" class="page-link">&#171;</a>

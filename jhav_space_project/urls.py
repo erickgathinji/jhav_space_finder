@@ -21,6 +21,8 @@ urlpatterns = [
 
     path('', include('screens.urls')),
 
+    path('spaces/', include('spaces.urls')), #delete if spaces/
+
     path('admin/', admin.site.urls),
 
 ]

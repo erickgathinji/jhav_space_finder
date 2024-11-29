@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,8 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'jhav_main.apps.JhavMainConfig',
+    'jhav_main.apps.JhavMainConfig', #custom apps
     'screens.apps.ScreensConfig',
+    'spaces.apps.SpacesConfig',
+    'managers.apps.ManagersConfig',
 ]
 
 MIDDLEWARE = [
@@ -78,10 +81,15 @@ WSGI_APPLICATION = 'jhav_space_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('postgrespacedb'),
+        'USER': 'postgres',
+        'PASSWORD': os.environ.get('postgres_pass'),
+        'HOST': 'localhost',
+
     }
 }
+
 
 
 # Password validation

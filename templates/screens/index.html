@@ -28,14 +28,14 @@
 
                                 <!--city-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="sr-only">City</label>
-                                    <input type="text" name="city" class="form-control" placeholder="City or Town">
+                                    <label class="sr-only">Town</label>
+                                    <input type="text" name="town" class="form-control" placeholder="Town or Location">
                                 </div>
 
                                 <!--search county-->
                                 <div class="col-md-4 mb-3">
                                     <label class="sr-only">County</label> <!--change to county-->
-                                    <select name="state" class="form-control">
+                                    <select name="county" class="form-control">
                                         <option selected="" disabled="disabled">County</option>
 
                                         {% for entry,value in county_options.items %}
@@ -49,7 +49,7 @@
                                 <!--Desks-->
                                 <div class="col-md-6 mb-3">
                                     <label class="sr-only">Desks</label>
-                                    <select name="bedrooms" class="form-control">
+                                    <select name="desks" class="form-control">
                                         <option selected="" disabled="disabled">Number of Desks</option>
                                         {% for entry,value in desk_options.items %}
                                             <option value="{{ entry }}">{{ value }}</option>
@@ -60,7 +60,7 @@
                                 <!--Price-->
                                 <div class="col-md-6 mb-3">
                                     <select name="price" class="form-control" id="type">
-                                        <option selected="" disabled="disabled">Maximum Price/Budget (Any)</option>
+                                        <option selected="" disabled="disabled">Monthly Budget</option>
                                         {% for entry,value in price_options.items %}
                                             <option value="{{ entry }}">{{ value }}</option>
                                         {% endfor %}

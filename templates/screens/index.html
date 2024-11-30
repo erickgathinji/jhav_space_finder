@@ -16,7 +16,7 @@
                         with
                         ease, all in one seamless platform.</p>
                     <div class="search">
-                        <form action="search_result.html">
+                        <form action="{% url 'search' %}">
                             <!-- Form Row 1 -->
                             <div class="form-row">
                                 <!--keyword-->
@@ -36,55 +36,11 @@
                                 <div class="col-md-4 mb-3">
                                     <label class="sr-only">County</label> <!--change to county-->
                                     <select name="state" class="form-control">
-                                        <option selected="" disabled="disabled">County (All)</option>
-                                        <option value="">Nairobi</option>
-                                        <option value="">Mombasa</option>
-                                        <option value="">Kisumu</option>
-                                        <option value="">Kakamega</option>
-                                        <option value=""> Nakuru</option>
-                                        <option value="">Kwale</option>
-                                        <option value="">Kilifi</option>
-                                        <option value="">Tana River</option>
-                                        <option value="">Lamu</option>
-                                        <option value="">Taita Taveta</option>
-                                        <option value="">Garissa</option>
-                                        <option value="">Wajir</option>
-                                        <option value="">Mandera</option>
-                                        <option value="">Marsabit</option>
-                                        <option value="">Isiolo</option>
-                                        <option value="">Meru</option>
-                                        <option value="">Tharaka-Nithi</option>
-                                        <option value="">Embu</option>
-                                        <option value=""> Kitui</option>
-                                        <option value="">Machakos</option>
-                                        <option value=""> Makueni</option>
-                                        <option value="">Nyandarua</option>
-                                        <option value="">Nyeri</option>
-                                        <option value="">Kirinyaga</option>
-                                        <option value="">Murang'a</option>
-                                        <option value="">Kiambu</option>
-                                        <option value="">Turkana</option>
-                                        <option value="">West Pokot</option>
-                                        <option value="">Samburu</option>
-                                        <option value="">Trans Nzoia</option>
-                                        <option value="">Uasin Gishu</option>
-                                        <option value="">Elgeyo/Marakwet</option>
-                                        <option value="">Nandi</option>
-                                        <option value="">Baringo</option>
-                                        <option value="">Laikipia</option>
-                                        <option value=""> Narok</option>
-                                        <option value=""> Kajiado</option>
-                                        <option value=""> Kericho</option>
-                                        <option value="">Bomet</option>
-                                        <option value="">Vihiga</option>
-                                        <option value="">Bungoma</option>
-                                        <option value="">Busia</option>
-                                        <option value="">Siaya</option>
-                                        <option value="">Homa Bay</option>
-                                        <option value="">Migori</option>
-                                        <option value="">Kisii</option>
-                                        <option value="">Nyamira</option>
+                                        <option selected="" disabled="disabled">County</option>
 
+                                        {% for entry,value in county_options.items %}
+                                            <option value="{{ entry }}">{{ value }}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                             </div>
@@ -94,32 +50,10 @@
                                 <div class="col-md-6 mb-3">
                                     <label class="sr-only">Desks</label>
                                     <select name="bedrooms" class="form-control">
-                                        <option selected="" disabled="disabled">Desks (All)</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15</option>
-                                        <option value="16">16</option>
-                                        <option value="17">17</option>
-                                        <option value="18">18</option>
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                        <option value="21">21</option>
-                                        <option value="22">22</option>
-                                        <option value="23">23</option>
-                                        <option value="24">24</option>
-                                        <option value="25">25</option>
+                                        <option selected="" disabled="disabled">Number of Desks</option>
+                                        {% for entry,value in desk_options.items %}
+                                            <option value="{{ entry }}">{{ value }}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
 
@@ -127,16 +61,9 @@
                                 <div class="col-md-6 mb-3">
                                     <select name="price" class="form-control" id="type">
                                         <option selected="" disabled="disabled">Maximum Price/Budget (Any)</option>
-                                        <option value="2500">Ksh. 2,500</option>
-                                        <option value="5000">Ksh. 5,000</option>
-                                        <option value="10000">Ksh. 10,000</option>
-                                        <option value="20000">Ksh. 20,000</option>
-                                        <option value="35000">Ksh. 35,000</option>
-                                        <option value="50000">Ksh. 50,000</option>
-                                        <option value="100000">Ksh. 100,000</option>
-                                        <option value="250000">Ksh. 250,000</option>
-                                        <option value="500000">Ksh. 500,000</option>
-                                        <option value="1000000">Ksh. 1M+</option>
+                                        {% for entry,value in price_options.items %}
+                                            <option value="{{ entry }}">{{ value }}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                             </div>

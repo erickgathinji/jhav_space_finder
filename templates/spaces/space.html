@@ -1,1 +1,227 @@
-<h1>Space</h1>
+{% extends 'master.html' %}
+{% load humanize %}
+{% load static %}
+
+
+{% block content %}
+    <!-- Space Listing Header-->
+    <section id="showcase-inner" class="py-5 text-white" style="background: url('{% static 'img/table.jpg' %}')">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <h1 class="display-4">{{ space.name }}</h1>
+                    <p class="lead">
+                        <i class="fas fa-map-marker"></i> {{ space.town_or_location }}, {{ space.county }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breadcrumb mini-nav -->
+    <section id="bc" class="mt-3">
+        <div class="container">
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="{% url 'spaces' %}">Explore Spaces</a>
+                    </li>
+                    <li class="breadcrumb-item active">{{ space.name }}</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Space -->
+    <section id="listing" class="py-4" style="background: #e1e0e0">
+        <div class="container">
+            <a href="{% url 'spaces' %}" class="btn btn-primary btn-block mb-4"
+               style="width:13%; border: 1px solid transparent;"> Back To Spaces</a>
+            <div class="row">
+                <div class="col-md-9">
+
+                    <!-- Home Space Photo -->
+                    <img src="{{ space.main_space_photo.url }}" alt="" class="img-main img-fluid mb-3">
+                    <!-- other space photos -->
+                    <div class="row mb-5 thumbs">
+
+                        {% if space.other_photo_1 %}
+                            {#other photo 1#}
+                            <div class="col-md-2">
+                                <a href="{{ space.other_photo_1.url }}" data-lightbox="home-images">
+                                    <img src="{{ space.other_photo_1.url }}" alt="" class="img-fluid">
+                                </a>
+                            </div>
+                        {% endif %}
+
+                        {% if space.other_photo_2 %}
+                            {#other photo 2#}
+                            <div class="col-md-2">
+                                <a href="{{ space.other_photo_2.url }}" data-lightbox="home-images">
+                                    <img src="{{ space.other_photo_2.url }}" alt="" class="img-fluid">
+                                </a>
+                            </div>
+                        {% endif %}
+
+                        {% if space.other_photo_3 %}
+                            {#other photo 3#}
+                            <div class="col-md-2">
+                                <a href="{{ space.other_photo_3.url }}" data-lightbox="home-images">
+                                    <img src="{{ space.other_photo_3.url }}" alt="" class="img-fluid">
+                                </a>
+                            </div>
+                        {% endif %}
+
+                        {% if space.other_photo_4 %}
+                            {#other photo 4#}
+                            <div class="col-md-2">
+                                <a href="{{ space.other_photo_4.url }}" data-lightbox="home-images">
+                                    <img src="{{ space.other_photo_4.url }}" alt="" class="img-fluid">
+                                </a>
+                            </div>
+                        {% endif %}
+
+                        {% if space.other_photo_5 %}
+                            {#other photo 5#}
+                            <div class="col-md-2">
+                                <a href="{{ space.other_photo_5.url }}" data-lightbox="home-images">
+                                    <img src="{{ space.other_photo_5.url }}" alt="" class="img-fluid">
+                                </a>
+                            </div>
+                        {% endif %}
+
+                        {% if space.other_photo_6 %}
+                            {#other photo 6#}
+                            <div class="col-md-2">
+                                <a href="{{ space.other_photo_6.url }}" data-lightbox="home-images">
+                                    <img src="{{ space.other_photo_6.url }}" alt="" class="img-fluid">
+                                </a>
+                            </div>
+                        {% endif %}
+
+                    </div>
+                    <!-- Fields -->
+                    <div class="row mb-5 fields">
+                        <div class="col-md-6">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item text-secondary">
+                                    <i class="fas fa-money-bill-alt"></i> Daily charges:
+                                    <span class="float-right">Ksh. {{ space.daily_charges | intcomma }}</span>
+                                </li>
+                                <li class="list-group-item text-secondary">
+                                    <i class="fas fa-money-bill-alt"></i> Weekly charges:
+                                    <span class="float-right">Ksh. {{ space.weekly_charges | intcomma }}</span>
+                                </li>
+                                <li class="list-group-item text-secondary">
+                                    <i class="fas fa-money-bill-alt"></i> Monthly charges:
+                                    <span class="float-right">Ksh. {{ space.monthly_charges | intcomma }}</span>
+                                </li>
+                                <li class="list-group-item text-secondary">
+                                    <i class="fas fa-money-bill-alt"></i> Annual charges:
+                                    <span class="float-right">Ksh. {{ space.annual_charges | intcomma }}</span>
+                                </li>
+                                <li class="list-group-item text-secondary">
+                                    <i class="fas fa-clock"></i> Open:
+                                    <span class="float-right"> {{ space.open_time }} - {{ space.closing_time }} ({{ space.days_open }})</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item text-secondary">
+                                    <i class="fa-solid fa-user-group"></i> Capacity:
+                                    <span class="float-right">{{ space.capacity }}</span>
+                                </li>
+                                <li class="list-group-item text-secondary">
+                                    <i class="fas fa-couch"></i> Desks:
+                                    <span class="float-right">{{ space.desks }}</span>
+                                </li>
+                                <li class="list-group-item text-secondary">
+                                    <i class="fas fa-th-large"></i> Rooms:
+                                    <span class="float-right">6</span>
+                                </li>
+                                <li class="list-group-item text-secondary">
+                                    <i class="fas fa-car"></i> Parking:
+                                    <span class="float-right">{{ space.parking }}</span>
+                                </li>
+                                <li class="list-group-item text-secondary">
+                                    <i class="fas fa-calendar-check"></i> First Published:
+                                    <span class="float-right">{{ space.published_on | date }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Space Description -->
+                    <div class="row mb-5">
+                        <div class="col-md-12">
+                            {{ space.description }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--Manager + book-->
+                <div class="col-md-3">
+                    <div class="card mb-3">
+                        <img class="card-img-top" src="{{ space.manager.upload_photo.url }}" alt="space manager">
+                        <div class="card-body">
+                            <h5 class="card-title">Space Manager</h5>
+                            <h6 class="text-secondary">{{ space.manager }}</h6>
+                        </div>
+                    </div>
+                    <button class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Reserve
+                        Space
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- booking Modal -->
+    <div class="modal fade" id="inquiryModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="inquiryModalLabel">Secure Your Spot</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="space_name" class="col-form-label">Space:</label>
+                            <input type="text" name="listing" class="form-control" value="Mombasa Connect" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-form-label">Name:</label>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-form-label">Email:</label>
+                            <input type="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="col-form-label">Phone:</label>
+                            <input type="text" name="phone" class="form-control">
+                        </div>
+                        <div class="form-group"><!--custom-->
+                            <label for="date" class="col-form-label">Date&Time:</label>
+                            <input type="datetime-local" name="date-time" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="col-form-label">Message:</label>
+                            <textarea name="message" class="form-control"></textarea>
+                        </div>
+                        <hr>
+                        <input type="submit" value="Book" class="btn btn-block btn-secondary">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

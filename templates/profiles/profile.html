@@ -1,1 +1,84 @@
-<h1>profile</h1>
+{% extends 'master.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+
+    <!--Account-header-->
+    <section id="showcase-inner" class="py-5 text-white" style="background: url('{% static "img/table.jpg" %}')">
+
+        {#Notifications#}
+        {% include 'components/_notifications.html' %}
+
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <h1 class="display-4">User Account</h1>
+                    <p class="lead">View & Manage Your Jhav Space Bookings</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breadcrumb mini-nav -->
+    <section id="bc" class="mt-3">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{% url 'index' %}">
+                            <i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="breadcrumb-item active"> Profile</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!--Reservations-->
+    <section id="dashboard" class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Great to see you Kim!</h2>
+                    <p>See your workspace reservation requests:</p>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Space</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>14</td>
+                            <td>Mombasa Connect</td>
+                            <td>
+                                <a class="btn btn-light" href="#">View Space</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>21</td>
+                            <td>Nairobi Nexus</td>
+                            <td>
+                                <a class="btn btn-light" href="#">View Space</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>19</td>
+                            <td> Sankara Station</td>
+                            <td>
+                                <a class="btn btn-light" href="#">View Space</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock %}

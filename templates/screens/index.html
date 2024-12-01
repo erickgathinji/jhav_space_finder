@@ -6,6 +6,12 @@
 
     <!-- Showcase / Header -->
     <section id="showcase" style="background: url('{% static "img/header.jpg" %}') no-repeat;background-size: cover">
+
+        {#<br> {#line break#}
+        {#Notifications#}
+        {% include 'components/_notifications.html' %}
+
+
         <div class="container text-center">
             <div class="home-search p-5">
                 <div class="overlay p-5">
@@ -76,9 +82,7 @@
         </div>
     </section>
 
-    {#Notifications#}
-    {% include 'components/_notifications.html' %}
-    
+
     <!-- Newest Space -->
     <section id="listings" class="py-5" style="background: #e1e0e0">
         <div class="container">

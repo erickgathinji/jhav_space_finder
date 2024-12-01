@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'spaces.apps.SpacesConfig',
     'profiles.apps.ProfilesConfig',
     'managers.apps.ManagersConfig',
+    'bookings.apps.BookingsConfig'
 ]
 
 MIDDLEWARE = [

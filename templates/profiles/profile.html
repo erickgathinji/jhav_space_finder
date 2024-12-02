@@ -18,7 +18,7 @@
             <div class="row text-center">
                 <div class="col-md-12">
                     <h1 class="display-4">User Account</h1>
-                    <p class="lead">View & Manage Your Jhav Space Bookings</p>
+                    <p class="lead">View & Manage Your Jhav Space Bookings </p>
                 </div>
             </div>
         </div>
@@ -44,40 +44,42 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Great to see you Kim!</h2>
-                    <p>See your workspace reservation requests:</p>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Space</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>14</td>
-                            <td>Mombasa Connect</td>
-                            <td>
-                                <a class="btn btn-light" href="#">View Space</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>21</td>
-                            <td>Nairobi Nexus</td>
-                            <td>
-                                <a class="btn btn-light" href="#">View Space</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>19</td>
-                            <td> Sankara Station</td>
-                            <td>
-                                <a class="btn btn-light" href="#">View Space</a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <h2>Welcome back, {{ user.first_name }}!</h2>
+
+                    {% if bookings %}
+
+                        <p>Check out your workspace booking requests below:</p>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Booking ID</th>
+                                <th scope="col">Coworking Space</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {% for booking in bookings %}
+
+                                <tr>
+                                    <td>{{ booking.id }}</td>
+                                    <td>{{ booking.space }}</td>
+                                    <td>
+                                        <a class="btn btn-light" href="{% url 'space' booking.space_id %}">View Space</a>
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+                            
+                            </tbody>
+                        </table>
+
+                    {% else %}
+
+                        <p>No reservations yet {{ user.first_name }}, explore and book now!</p>
+
+                    {% endif %}
+
                 </div>
             </div>
         </div>

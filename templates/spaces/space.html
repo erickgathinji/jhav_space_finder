@@ -9,6 +9,11 @@
 {% block content %}
     <!-- Space Listing Header-->
     <section id="showcase-inner" class="py-5 text-white" style="background: url('{% static 'img/table.jpg' %}')">
+        
+         {#<br> {#line break#}
+        {#Notifications#}
+        {% include 'components/_notifications.html' %}
+        
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-12">
@@ -193,26 +198,44 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form method="POST" action="{% url 'booking' %}">
+                        {% csrf_token %}
+
+                        {% if user.is_authenticated %}
+                            <input name="user_id" type="hidden" value="{{ user.id }}">
+                        {% else %}
+                            <input name="user_id" type="hidden" value="0">
+                        {% endif %}
+                        <input type="hidden" value="{{ space.manager.email }}" name="manager_email">
+                        <input type="hidden" value="{{ space.id }}" name="space_id">
+
                         <div class="form-group">
                             <label for="space_name" class="col-form-label">Space:</label>
-                            <input type="text" name="listing" class="form-control" value="Mombasa Connect" disabled>
+                            <input type="text" name="space" class="form-control" value="{{ space.name }}">
                         </div>
                         <div class="form-group">
                             <label for="name" class="col-form-label">Name:</label>
-                            <input type="text" name="name" class="form-control" required>
+                            <input type="text" name="name" class="form-control"
+                                    {% if user.is_authenticated %}
+                                       value="{{ user.first_name }} {{ user.last_name }}"
+                                    {% endif %}
+                                   required>
                         </div>
                         <div class="form-group">
                             <label for="email" class="col-form-label">Email:</label>
-                            <input type="email" name="email" class="form-control" required>
+                            <input type="email" name="email" class="form-control"
+                                    {% if user.is_authenticated %}
+                                       value="{{ user.email }}"
+                                    {% endif %}
+                                   required>
                         </div>
                         <div class="form-group">
                             <label for="phone" class="col-form-label">Phone:</label>
-                            <input type="text" name="phone" class="form-control">
+                            <input type="text" name="phone" class="form-control" required>
                         </div>
                         <div class="form-group"><!--custom-->
-                            <label for="date" class="col-form-label">Date&Time:</label>
-                            <input type="datetime-local" name="date-time" class="form-control">
+                            <label for="date" class="col-form-label">Reservation Date & Time:</label>
+                            <input type="datetime-local" name="reservation_date_time" class="form-control" required>
                         </div>
 
                         <div class="form-group">

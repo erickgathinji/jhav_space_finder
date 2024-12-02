@@ -23,6 +23,8 @@ urlpatterns = [
 
     path('', include('screens.urls')),
 
+    path('bookings/', include('bookings.urls')),
+
     path('spaces/', include('spaces.urls')),
 
     path('profiles/', include('profiles.urls')),

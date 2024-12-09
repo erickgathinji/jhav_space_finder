@@ -16,71 +16,29 @@
         {% include 'components/_notifications.html' %}
 
 
-        <div class="container text-center">
-            <div class="home-search p-5">
-                <div class="overlay p-5">
-                    <h1 class="display-4 mb-4">
-                        Find your Ideal Coworking Space in just a click
-                    </h1>
-                    <p class="lead">Securing the perfect workspace has never been simpler. Browse, compare, and book
-                        with ease, all in one seamless platform.</p>
-                    <div class="search">
-                        <form action="{% url 'search' %}">
-                            <!-- Form Row 1 -->
-                            <div class="form-row">
-                                <!--keyword-->
-                                <div class="col-md-4 mb-3">
-                                    <label class="sr-only">Keywords</label>
-                                    <input type="text" name="keywords" class="form-control"
-                                           placeholder="Keyword (Workspace, Amenities, etc)">
-                                </div>
+        <div class="container text-center ">
+            <div class="home-search p-5 ">
+                <div class="overlay p-5 ">
 
-                                <!--city-->
-                                <div class="col-md-4 mb-3">
-                                    <label class="sr-only">Town</label>
-                                    <input type="text" name="town" class="form-control" placeholder="Town or Location">
-                                </div>
 
-                                <!--search county-->
-                                <div class="col-md-4 mb-3">
-                                    <label class="sr-only">County</label> <!--change to county-->
-                                    <select name="county" class="form-control">
-                                        <option selected="" disabled="disabled">County</option>
+                    <h1 class="display-4">Empowering Your Professional Journey</h1>
 
-                                        {% for entry,value in county_options.items %}
-                                            <option value="{{ entry }}">{{ value }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- Form Row 2 -->
-                            <div class="form-row">
-                                <!--Desks-->
-                                <div class="col-md-6 mb-3">
-                                    <label class="sr-only">Desks</label>
-                                    <select name="desks" class="form-control">
-                                        <option selected="" disabled="disabled">Number of Desks</option>
-                                        {% for entry,value in desk_options.items %}
-                                            <option value="{{ entry }}">{{ value }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
+                    <hr>
+                    
+                    <h5>We will guide you to the most suitable workspaces that </h5>
+                    <h5>enhance productivity and inspire collaboration.</h5>
 
-                                <!--Price-->
-                                <div class="col-md-6 mb-3">
-                                    <select name="price" class="form-control" id="type">
-                                        <option selected="" disabled="disabled">Monthly Budget</option>
-                                        {% for entry,value in price_options.items %}
-                                            <option value="{{ entry }}">{{ value }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </div>
+                    <hr>
+                    <hr>
+                    <hr>
+                    <hr>
 
-                            <button class="btn btn-secondary btn-block mt-4" type="submit">Browse Spaces</button>
+                    <a href="{% url 'search' %}" class="btn btn-primary btn-block"
+                       style="max-width: 300px; display: inline-block;">
+                        Explore Spaces</a>
+                    <hr>
 
-                        </form>
-                    </div>
+
                 </div>
             </div>
         </div>

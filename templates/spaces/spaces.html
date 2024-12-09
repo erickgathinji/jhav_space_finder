@@ -1,11 +1,12 @@
 {% extends 'master.html' %}
 {% load humanize %}
 {% load static %}
-{% block content %}
 
-    {% block title %}
-        - Browse Spaces
-    {% endblock %}
+{% block title %}
+    - Browse Spaces
+{% endblock %}
+
+{% block content %}
 
     <!--Coworking spaces screen-->
     <section id="showcase-inner" class="py-5 text-white" style="background: url('{% static "img/table.jpg" %}')">
@@ -13,7 +14,15 @@
             <div class="row text-center">
                 <div class="col-md-12">
                     <h1 class="display-4">Explore Coworking Spaces</h1>
-                    <p class="lead">We’ll guide you to the most suitable workspace to achieve your desired outcomes.</p>
+                    <p class="lead">Find your Ideal Coworking Space in just a click.</p>
+
+                    <hr>
+
+                    <a href="{% url 'search' %}" class="btn btn-primary btn-block"
+                       style="max-width: 300px; display: inline-block;">
+                        Search</a>
+                    
+
                 </div>
             </div>
         </div>
